@@ -1,0 +1,1 @@
+# texts-analyzer-app-nodejs

@@ -1,8 +1,12 @@
 import express from "express";
 import sequelize from "./database/connection";
+import { errorHandler } from "./middleware/errorHandler";
+import textRoutes from "./routes/textRoutes";
 
 const app = express();
-const PORT = 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 sequelize
   .sync()
@@ -13,6 +17,10 @@ sequelize
     console.error("Database connection error:", err);
   });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.use("/api", textRoutes);
+
+app.use(errorHandler);
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });

@@ -64,6 +64,14 @@ Run tests inside the Docker container:
 docker-compose exec server npm test
 ```
 
+## API Documentation
+
+Explore the API endpoints and models using Swagger UI at `http://localhost:3000/api-docs/`.
+
+- Interactive documentation
+- Try out API endpoints directly in the browser
+- View request/response schemas
+
 ## Project Structure
 
 - `server`: Node.js Express application

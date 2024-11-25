@@ -19,7 +19,7 @@ export class TextAnalysisController {
       }
 
       const textAnalysisService = new TextAnalysisService(text.text);
-      const wordCount = textAnalysisService.countWords();
+      const wordCount = await textAnalysisService.countWords();
 
       res.json({
         textId: id,
@@ -46,7 +46,7 @@ export class TextAnalysisController {
       }
 
       const textAnalysisService = new TextAnalysisService(text.text);
-      const characterCount = textAnalysisService.countCharacters();
+      const characterCount = await textAnalysisService.countCharacters();
 
       res.json({
         textId: id,
@@ -127,7 +127,7 @@ export class TextAnalysisController {
       }
 
       const textAnalysisService = new TextAnalysisService(text.text);
-      const longestWords = textAnalysisService.findLongestWords();
+      const longestWords = await textAnalysisService.findLongestWords();
 
       res.json({
         textId: id,

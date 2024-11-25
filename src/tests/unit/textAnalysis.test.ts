@@ -10,14 +10,14 @@ describe("TextAnalysisService", () => {
       );
     });
 
-    test("should count words correctly", () => {
-      const wordCount = textAnalysisService.countWords();
+    test("should count words correctly", async () => {
+      const wordCount = await textAnalysisService.countWords();
       expect(wordCount).toBe(7);
     });
 
-    test("should handle multiple spaces", () => {
+    test("should handle multiple spaces", async () => {
       textAnalysisService = new TextAnalysisService("  Hello   world  test  ");
-      const wordCount = textAnalysisService.countWords();
+      const wordCount = await textAnalysisService.countWords();
       expect(wordCount).toBe(3);
     });
   });
@@ -27,13 +27,13 @@ describe("TextAnalysisService", () => {
       textAnalysisService = new TextAnalysisService("Hello world!");
     });
 
-    test("should count characters with spaces", () => {
-      const charCount = textAnalysisService.countCharacters(true);
+    test("should count characters with spaces", async () => {
+      const charCount = await textAnalysisService.countCharacters(true);
       expect(charCount).toBe(12);
     });
 
-    test("should count characters without spaces", () => {
-      const charCount = textAnalysisService.countCharacters(false);
+    test("should count characters without spaces", async () => {
+      const charCount = await textAnalysisService.countCharacters(false);
       expect(charCount).toBe(11);
     });
   });
@@ -79,16 +79,16 @@ describe("TextAnalysisService", () => {
       );
     });
 
-    test("should find longest words", () => {
-      const longestWords = textAnalysisService.findLongestWords();
+    test("should find longest words", async () => {
+      const longestWords = await textAnalysisService.findLongestWords();
       expect(longestWords).toContain(
         "Pneumonoultramicroscopicsilicovolcanoconiosis"
       );
     });
 
-    test("should remove duplicates", () => {
+    test("should remove duplicates", async () => {
       textAnalysisService = new TextAnalysisService("long long longer longest");
-      const longestWords = textAnalysisService.findLongestWords();
+      const longestWords = await textAnalysisService.findLongestWords();
       expect(longestWords.length).toBe(7);
     });
   });

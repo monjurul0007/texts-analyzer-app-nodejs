@@ -118,7 +118,6 @@ export class TextAnalysisController {
   ): Promise<void> {
     try {
       const { id } = req.params;
-      const { limit = 5 } = req.query;
       const textService = new TextService();
       const text = await textService.getTextById(Number(id));
 
@@ -128,7 +127,7 @@ export class TextAnalysisController {
       }
 
       const textAnalysisService = new TextAnalysisService(text.text);
-      const longestWords = textAnalysisService.findLongestWords(Number(limit));
+      const longestWords = textAnalysisService.findLongestWords();
 
       res.json({
         textId: id,

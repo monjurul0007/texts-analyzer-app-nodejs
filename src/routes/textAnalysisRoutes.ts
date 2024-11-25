@@ -123,12 +123,6 @@ import { TextAnalysisController } from "../controllers/textAnalysisController";
  *         schema:
  *           type: integer
  *         description: Unique identifier of the text
- *       - in: query
- *         name: limit
- *         schema:
- *           type: integer
- *           default: 5
- *         description: Maximum number of longest words to return
  *     responses:
  *       200:
  *         description: Longest words retrieved successfully

@@ -30,14 +30,13 @@ class TextAnalysisService {
     return paragraphs.filter((para) => para.trim().length > 0).length;
   }
 
-  findLongestWords(limit: number = 5): string[] {
-    const words = this.text.replace(/[^\w\s]/g, "").split(/\s+/);
+  findLongestWords(): string {
+    const words = this.text.match(/\b\w+\b/g);
+    if (!words) return "";
 
-    const sortedWords = words
-      .sort((a, b) => b.length - a.length)
-      .filter((word, index, self) => self.indexOf(word) === index);
-
-    return sortedWords.slice(0, limit);
+    return words.reduce((longest, currentWord) => {
+      return currentWord.length > longest.length ? currentWord : longest;
+    }, "");
   }
 }
 

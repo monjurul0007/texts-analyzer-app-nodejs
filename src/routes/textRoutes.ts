@@ -1,8 +1,6 @@
 import { Router } from "express";
 import { TextController } from "../controllers/textController";
 
-const router = Router();
-
 /**
  * @swagger
  * components:
@@ -120,6 +118,9 @@ const router = Router();
  *       500:
  *         description: Server error
  */
+
+const router = Router();
+
 router.get("/texts", TextController.getAllText);
 router.post("/texts", TextController.createText);
 router.put("/texts/:id", TextController.updateText);

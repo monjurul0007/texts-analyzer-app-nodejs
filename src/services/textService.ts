@@ -11,6 +11,16 @@ class TextService {
     }
   }
 
+  public async getTextById(id: number) {
+    try {
+      const text = await Texts.findByPk(id);
+
+      return text;
+    } catch (error) {
+      throw Error("Can Not fetch Texts");
+    }
+  }
+
   public async createText(text: string) {
     try {
       const texts = await Texts.create({ text });
